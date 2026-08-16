@@ -15,12 +15,16 @@ public class DataflowPipeline {
     public static void main(String[] args) {
         Pipeline pipeline = Pipeline.create();
 
-        PCollection<String> input = pipeline.apply("Create String Data", Create.of("Alice", "Bob", "Charlie", null));
+        PCollection<String> input = pipeline.apply("Create String Data", Create.of("Alice", "Bob", "Charlie", "CRASH"));
 
         PCollection<String> upperCaseOutput = input.apply("Uppercase", ParDo.of(new DoFn<String, String> () {
         @ProcessElement
         public void processElement(ProcessContext c) {
             String input = c.element();
+            if ("CRASH".equals(input)) {
+                logger.error("Encountered CRASH input, throwing exception.");
+                throw new RuntimeException("Simulated crash for input: " + input);
+            }
             String upperCaseOutput = input.toUpperCase();
             logger.info("Input: " + input + ", Uppercase Output: " + upperCaseOutput);
             c.output(upperCaseOutput);
