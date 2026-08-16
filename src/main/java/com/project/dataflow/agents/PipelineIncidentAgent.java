@@ -6,6 +6,6 @@ import com.project.dataflow.models.PipelineAnalysis;
 public class PipelineIncidentAgent {
 
     public PipelineAnalysis analyzeIncident(IncidentState incidentState) {
-        
+        return null;
     }
 }
