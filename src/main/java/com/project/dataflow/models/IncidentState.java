@@ -21,6 +21,12 @@ public class IncidentState {
     public List<String> getLogs() {
         return logs;
     }
-    
+    public PipelineAnalysis getPipelineAnalysis() {
+        return pipelineAnalysis;
+    }
+
+    public void setPipelineAnalysis(PipelineAnalysis pipelineAnalysis) {
+        this.pipelineAnalysis = pipelineAnalysis;
+    }
 
 }
