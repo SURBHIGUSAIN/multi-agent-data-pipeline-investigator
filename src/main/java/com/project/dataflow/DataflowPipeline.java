@@ -15,7 +15,7 @@ public class DataflowPipeline {
     public static void main(String[] args) {
         Pipeline pipeline = Pipeline.create();
 
-        PCollection<String> input = pipeline.apply("Create String Data", Create.of("Alice", "Bob", "Charlie", "David"));
+        PCollection<String> input = pipeline.apply("Create String Data", Create.of("Alice", "Bob", "Charlie", null));
 
         PCollection<String> upperCaseOutput = input.apply("Uppercase", ParDo.of(new DoFn<String, String> () {
         @ProcessElement
