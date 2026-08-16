@@ -15,7 +15,7 @@ public class PipelineAnalysis {
     private List<String> evidence;
     private Confidence confidence;
 
-    PipelineAnalysis(String failedComponent, String failureType, List<String> evidence, Confidence confidence) {
+    public PipelineAnalysis(String failedComponent, String failureType, List<String> evidence, Confidence confidence) {
         this.failedComponent = failedComponent;
         this.failureType = failureType;
         this.evidence = evidence;
